@@ -1,41 +1,30 @@
 const mongoose = require("mongoose");
-const { type } = require("os");
 
-const pinSchema = new mongoose.Schema(
+
+const PinSchema = new mongoose.Schema(
     {
         username: {
             type: String,
             require:true,
-            
+            min: 3,
+            max: 20,
+            unique: true
         },
-        title: {
+        email: {
             type:String,
             require: true,
-            min: 3,
-
+            max: 50,
+            unique: true,
         },
         password: {
             type:String,
-            required: true,
+            required:true,
             min: 6,
         },
-
-        rating: {
-            type: Number,
-            required: true,
-            min: 0,
-            max: 5
-        },
-        lat: {
-            type: Number,
-            require: true
-        },
-        long: {
-            type: Number,
-            require: true
-        }
+        
     },
     {timestamps: true}
+    
 );
 
-module.exports = mongoose.model("Pin", pinSchema);
+module.exports = mongoose.model("Pin", PinSchema);
