@@ -6,22 +6,34 @@ const pinSchema = new mongoose.Schema(
         username: {
             type: String,
             require:true,
-            min: 3,
-            max: 20,
-            unique: true
+            
         },
-        email: {
+        title: {
             type:String,
             require: true,
-            max: 50,
-            unique: true,
+            min: 3,
+
         },
         password: {
             type:String,
-            required,
+            required: true,
             min: 6,
         },
-        
+
+        rating: {
+            type: Number,
+            required: true,
+            min: 0,
+            max: 5
+        },
+        lat: {
+            type: Number,
+            require: true
+        },
+        long: {
+            type: Number,
+            require: true
+        }
     },
     {timestamps: true}
 );
