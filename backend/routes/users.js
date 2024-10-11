@@ -41,8 +41,8 @@ router.post("/login", async (req, res) => {
 
     //send response
     res.status(200).json({ _id: user._id, username: user.username });
-  } catch (err) {
-    res.status(500).json(err);
+  } catch (error) {
+    res.status(500).json(error);
   }
 });
 
