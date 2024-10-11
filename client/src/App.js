@@ -5,15 +5,17 @@ import { useState ,useEffect} from 'react';
 import StarIcon from '@mui/icons-material/Star';
 import "./app.css";
 import axios from "axios";
+import {format} from "timeago.js";
 
 
 function App() {
   const [pins, setPins] = useState([])
-const [showPopup, setShowPopup] = useState(true);
+  const [currentPlaceId, setCurrentPlaceId] = useState(null);
+
 useEffect(()=> {
   const getPins = async () => {
     try {
-      const res = await axios.get("/pins");
+      const res = await axios.get("/api/pins");
       setPins(res.data);
     } catch (error) {
       console.log(error)
@@ -21,6 +23,10 @@ useEffect(()=> {
   }
   getPins();
 },[]);
+
+const handleMarkerClick = (id) => {
+  setCurrentPlaceId(id)
+}
   return (
     <div className="App">
   <Map
@@ -34,20 +40,19 @@ useEffect(()=> {
       style={{width: "100vw", height: "100vh"}}
       mapStyle="mapbox://styles/mapbox/streets-v9"
     >
-      {pins.map(p =>
-      <>
+      {pins.map((p) => (
+          <>
       <Marker longitude={p.long} latitude={p.lat} anchor="bottom" >
-      <img src="./pin.png" style={{width:17, height:25}} />
+      <img src="./pin.png" style={{width:17, height:25}} onClick={()=>handleMarkerClick(p._id)}/>
     </Marker> 
-    {showPopup && (
-      <Popup longitude={2.294694} latitude={48.858093}
-        anchor="left"
-        onClose={() => setShowPopup(false)}>
+     
+      {p._id === currentPlaceId && (<Popup key={p._id} longitude={p.long} latitude={p.lat}
+        anchor="left">
         <div className='card'>
           <label>Place</label>
-          <h4 className='place'>Eiffel Tower</h4>
+          <h4 className='place'>{p.title}</h4>
           <label>Rewiev</label>
-          <p className='desc'>Beautiful place. I liked it a lot!</p>
+          <p className='desc'>{p.desc}</p>
           <label>Rating</label>
           <div>
             <StarIcon className='star'/>
@@ -57,12 +62,12 @@ useEffect(()=> {
             <StarIcon className='star'/>
           </div>
           <label>Information:</label>
-          <span className='username'>Created by <b>Kiril</b></span>
-          <span className='date'>1 hour ago</span>
+          <span className='username'>Created by <b>{p.username}</b></span>
+          <span className='date'>{format(p.createdAt)}</span>
         </div>
       </Popup>)}
       </>
-    )}
+        ))}
     </Map>
     </div>
   );
