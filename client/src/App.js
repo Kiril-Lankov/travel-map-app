@@ -3,9 +3,11 @@ import Map, {Marker, Popup} from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useState ,useEffect} from 'react';
 import StarIcon from '@mui/icons-material/Star';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import "./app.css";
 import axios from "axios";
 import {format} from "timeago.js";
+import { yellow } from '@mui/material/colors';
 
 
 function App() {
@@ -43,7 +45,8 @@ const handleMarkerClick = (id) => {
       {pins.map((p) => (
           <>
       <Marker longitude={p.long} latitude={p.lat} anchor="bottom" >
-      <img src="./pin.png" style={{width:17, height:25}} onClick={()=>handleMarkerClick(p._id)}/>
+      <LocationOnIcon style={{color: "#5D3FD3"}}
+       onClick={()=>handleMarkerClick(p._id)}/>
     </Marker> 
      
       {p._id === currentPlaceId && (<Popup key={p._id} longitude={p.long} latitude={p.lat}
