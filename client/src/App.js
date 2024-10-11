@@ -31,14 +31,14 @@ const [showPopup, setShowPopup] = useState(true);
           <label>Place</label>
           <h4 className='place'>Eiffel Tower</h4>
           <label>Rewiev</label>
-          <p>Beautiful place. I liked it a lot!</p>
+          <p className='desc'>Beautiful place. I liked it a lot!</p>
           <label>Rating</label>
           <div>
-            <StarIcon/>
-            <StarIcon/>
-            <StarIcon/>
-            <StarIcon/>
-            <StarIcon/>
+            <StarIcon className='star'/>
+            <StarIcon className='star'/>
+            <StarIcon className='star'/>
+            <StarIcon className='star'/>
+            <StarIcon className='star'/>
           </div>
           <label>Information:</label>
           <span className='username'>Created by <b>Kiril</b></span>
