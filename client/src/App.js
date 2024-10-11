@@ -3,7 +3,7 @@ import Map, {Marker, Popup} from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useState } from 'react';
 import StarIcon from '@mui/icons-material/Star';
-
+import "./app.css";
 
 function App() {
 const [showPopup, setShowPopup] = useState(true);
