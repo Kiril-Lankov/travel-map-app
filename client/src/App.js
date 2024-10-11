@@ -1,12 +1,26 @@
 import * as React from 'react';
 import Map, {Marker, Popup} from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { useState } from 'react';
+import { useState ,useEffect} from 'react';
 import StarIcon from '@mui/icons-material/Star';
 import "./app.css";
+import axios from "axios";
+
 
 function App() {
+  const [pins, setPins] = useState([])
 const [showPopup, setShowPopup] = useState(true);
+useEffect(()=> {
+  const getPins = async () => {
+    try {
+      const res = await axios.get("/pins");
+      setPins(res.data);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  getPins();
+},[]);
   return (
     <div className="App">
   <Map
@@ -20,7 +34,9 @@ const [showPopup, setShowPopup] = useState(true);
       style={{width: "100vw", height: "100vh"}}
       mapStyle="mapbox://styles/mapbox/streets-v9"
     >
-      <Marker longitude={2.294694} latitude={48.858093} anchor="bottom" >
+      {pins.map(p =>
+      <>
+      <Marker longitude={p.long} latitude={p.lat} anchor="bottom" >
       <img src="./pin.png" style={{width:17, height:25}} />
     </Marker> 
     {showPopup && (
@@ -45,6 +61,8 @@ const [showPopup, setShowPopup] = useState(true);
           <span className='date'>1 hour ago</span>
         </div>
       </Popup>)}
+      </>
+    )}
     </Map>
     </div>
   );
