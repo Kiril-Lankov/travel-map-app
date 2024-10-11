@@ -7,7 +7,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import "./app.css";
 import axios from "axios";
 import {format} from "timeago.js";
-import { yellow } from '@mui/material/colors';
+
 
 
 function App() {
@@ -27,6 +27,7 @@ useEffect(()=> {
 },[]);
 
 const handleMarkerClick = (id) => {
+  console.log("Marker clicked: ", id);
   setCurrentPlaceId(id)
 }
   return (
@@ -43,18 +44,19 @@ const handleMarkerClick = (id) => {
       mapStyle="mapbox://styles/mapbox/streets-v9"
     >
       {pins.map((p) => (
-          <>
-      <Marker longitude={p.long} latitude={p.lat} anchor="bottom" >
+  <React.Fragment key={p._id}>
+    <Marker longitude={p.long} latitude={p.lat} anchor="bottom" >
       <LocationOnIcon style={{color: "#5D3FD3"}}
-       onClick={()=>handleMarkerClick(p._id)}/>
+        onClick={() => handleMarkerClick(p._id)} />
     </Marker> 
-     
-      {p._id === currentPlaceId && (<Popup key={p._id} longitude={p.long} latitude={p.lat}
-        anchor="left">
+    {p._id === currentPlaceId && (
+      <Popup key={p._id} longitude={p.long} latitude={p.lat} anchor="left"
+      closeOnClick={false} 
+  onClose={() => setCurrentPlaceId(null)}>
         <div className='card'>
           <label>Place</label>
           <h4 className='place'>{p.title}</h4>
-          <label>Rewiev</label>
+          <label>Review</label>
           <p className='desc'>{p.desc}</p>
           <label>Rating</label>
           <div>
@@ -68,9 +70,11 @@ const handleMarkerClick = (id) => {
           <span className='username'>Created by <b>{p.username}</b></span>
           <span className='date'>{format(p.createdAt)}</span>
         </div>
-      </Popup>)}
-      </>
-        ))}
+      </Popup>
+    )}
+  </React.Fragment>
+))}
+      
     </Map>
     </div>
   );
