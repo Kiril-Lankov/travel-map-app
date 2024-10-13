@@ -4,7 +4,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import CancelIcon from '@mui/icons-material/Cancel';
 import axios from "axios";
 
-export default function Login({setShowLogin,myStorage}) {
+export default function Login({setShowLogin,myStorage, setCurrentUser}) {
     const [error, setError] = useState(false);
     const nameRef = useRef();
     const passwordRef = useRef();
@@ -18,7 +18,9 @@ const user = {
 
 try {
   const res = await axios.post("/api/users/login", user);
-  myStorage.setItem("user", res.data.username)
+  myStorage.setItem("user", res.data.username);
+  setCurrentUser(res.data.username);
+  setShowLogin(false);
   setError(false)
 } catch (error) {
     console.log(error)

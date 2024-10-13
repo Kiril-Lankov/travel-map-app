@@ -169,7 +169,7 @@ function App() {
         </div>
       )}
         {showRegister &&<Register setShowRegister={setShowRegister}/> }
-        {showLogin && <Login setShowLogin={setShowLogin} myStorage={myStorage}/>}
+        {showLogin && <Login setShowLogin={setShowLogin} myStorage={myStorage} setCurrentUser={setCurrentUser}/>}
       </Map> 
       
     </div>
