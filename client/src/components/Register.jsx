@@ -4,7 +4,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import CancelIcon from '@mui/icons-material/Cancel';
 import axios from "axios";
 
-export default function Register() {
+export default function Register({setShowRegister}) {
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);
     const nameRef = useRef();
@@ -43,7 +43,7 @@ try {
                     {error &&
                     <span className="failure">Something went wrong!</span>}
                 </form>   
-                <CancelIcon className="cancelRegister"/>
+                <CancelIcon className="cancelRegister" onClick={()=>setShowRegister(false)}/>
             </div>
         
     )
