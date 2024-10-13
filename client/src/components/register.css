@@ -31,3 +31,13 @@
     background-color: slateblue;
     cursor: pointer;
 }
+
+.success{
+    color: green;
+    font-size: 12px;
+}
+
+.failure{
+    color: red;
+    font-size: 12px;
+}
