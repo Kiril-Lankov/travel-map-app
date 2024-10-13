@@ -3,8 +3,8 @@ import "./register.css";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 export default function Register() {
-    const [success, setSuccess] = useState(null);
-    const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(false);
+    const [error, setError] = useState(false);
     return (
         <div className="registerContainer">
             <div className="logo">
