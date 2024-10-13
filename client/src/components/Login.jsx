@@ -4,20 +4,21 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import CancelIcon from '@mui/icons-material/Cancel';
 import axios from "axios";
 
-export default function Login({setShowLogin}) {
+export default function Login({setShowLogin,myStorage}) {
     const [error, setError] = useState(false);
     const nameRef = useRef();
     const passwordRef = useRef();
 
     const handleSubmit = async (e) => {
 e.preventDefault();
-const newUser = {
+const user = {
     username: nameRef.current.value,
     password: passwordRef.current.value,
 };
 
 try {
-  await axios.post("/api/users/register", newUser);
+  const res = await axios.post("/api/users/login", user);
+  myStorage.setItem("user", res.data.username)
   setError(false)
 } catch (error) {
     console.log(error)
