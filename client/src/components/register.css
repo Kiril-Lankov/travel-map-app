@@ -16,7 +16,7 @@
     justify-content: space-between;
 }
 
-.logo{
+.registerContainer > .logo{
     color: slateblue;
     display: flex;
     align-items: center;
