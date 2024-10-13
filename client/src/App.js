@@ -6,6 +6,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import './app.css';
 import axios from 'axios';
 import { format } from 'timeago.js';
+import Register from './components/Register';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -155,14 +156,17 @@ function App() {
             </div>
           </Popup>
         )}
-      </Map>
-      {currentUser ? (
+        {currentUser ? (
       <button className='button logout'>Log out</button>)
       : (
       <div className='controls'>
         <button className='button login'>Log in</button>
         <button className='button register'>Register</button>
-        </div>)}
+        </div>
+      )}
+        <Register/> 
+      </Map> 
+      
     </div>
   );
 }
