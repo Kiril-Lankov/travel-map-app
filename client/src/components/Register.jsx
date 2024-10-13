@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import "./register.css";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import CancelIcon from '@mui/icons-material/Cancel';
 import axios from "axios";
 
 export default function Register() {
@@ -19,7 +20,7 @@ const newUser = {
 };
 
 try {
-  await axios.post("/api/users", newUser);
+  await axios.post("/api/users/register", newUser);
   setError(false)
   setSuccess(true)
 } catch (error) {
@@ -42,6 +43,7 @@ try {
                     {error &&
                     <span className="failure">Something went wrong!</span>}
                 </form>   
+                <CancelIcon className="cancelRegister"/>
             </div>
         
     )
