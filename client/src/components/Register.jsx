@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import "./register.css";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import axios from "axios";
 
 export default function Register() {
     const [success, setSuccess] = useState(false);
