@@ -114,11 +114,7 @@ function App() {
                   <p className="desc">{p.desc}</p>
                   <label>Rating</label>
                   <div>
-                    <StarIcon className="star" />
-                    <StarIcon className="star" />
-                    <StarIcon className="star" />
-                    <StarIcon className="star" />
-                    <StarIcon className="star" />
+                    {Array(p.rating).fill(<StarIcon className="star" />)}
                   </div>
                   <label>Information:</label>
                   <span className="username">
@@ -158,6 +154,9 @@ function App() {
             </div>
           </Popup>
         )}
+        <button className='button logout'>Log out</button>
+        <button className='button login'>Log in</button>
+        <button className='button register'>Register</button>
       </Map>
     </div>
   );
