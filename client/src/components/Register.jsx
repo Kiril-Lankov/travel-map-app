@@ -16,8 +16,10 @@ export default function Register() {
                     <input type="email" placeholder="email" />
                     <input type="password" placeholder="password" />
                     <button className="registerBtn">Register</button>
-                    <span className="success">Successful.You can login now!</span>
-                    <span className="failure">Something went wrong!</span>
+                    {success &&
+                    <span className="success">Successful.You can login now!</span>}
+                    {error &&
+                    <span className="failure">Something went wrong!</span>}
                 </form>   
             </div>
         
