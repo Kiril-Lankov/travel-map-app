@@ -8,6 +8,7 @@ import axios from 'axios';
 import { format } from 'timeago.js';
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(null);
   const [pins, setPins] = useState([]);
   const [currentPlaceId, setCurrentPlaceId] = useState(null);
   const [newPlace, setNewPlace] = useState(null);
@@ -19,7 +20,7 @@ function App() {
     latitude: 47,
     zoom: 4
   });
-  const currentUser = 'Gery';
+  
 
   useEffect(() => {
     const getPins = async () => {
