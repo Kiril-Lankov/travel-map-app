@@ -154,10 +154,14 @@ function App() {
             </div>
           </Popup>
         )}
-        <button className='button logout'>Log out</button>
+      </Map>
+      {currentUser ? (
+      <button className='button logout'>Log out</button>)
+      : (
+      <div className='controls'>
         <button className='button login'>Log in</button>
         <button className='button register'>Register</button>
-      </Map>
+        </div>)}
     </div>
   );
 }

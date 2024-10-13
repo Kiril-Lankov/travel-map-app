@@ -55,3 +55,33 @@ input::placeholder, textarea::placeholder{
     background-color: coral;
     cursor: pointer;
 }
+
+.controls,.logout{
+    position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.button{
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+
+}
+
+.logout{
+    background-color: coral;
+}
+
+.login{
+    background-color: teal;
+}
+
+.register{
+    background-color: slateblue;
+}
