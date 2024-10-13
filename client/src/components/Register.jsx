@@ -1,7 +1,10 @@
+import { useState } from "react";
 import "./register.css";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 export default function Register() {
+    const [success, setSuccess] = useState(null);
+    const [error, setError] = useState(null);
     return (
         <div className="registerContainer">
             <div className="logo">
