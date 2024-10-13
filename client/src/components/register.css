@@ -35,9 +35,11 @@
 .success{
     color: green;
     font-size: 12px;
+    text-align: center;
 }
 
 .failure{
     color: red;
     font-size: 12px;
+    text-align: center;
 }
